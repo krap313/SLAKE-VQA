@@ -1,0 +1,124 @@
+{
+  "overall": {
+    "num_samples": 1061,
+    "accuracy_strict": 0.24882186616399624,
+    "accuracy_relaxed": 0.29029217719132894
+  },
+  "by_answer_type": {
+    "closed": {
+      "num_samples": 416,
+      "accuracy_strict": 0.5408653846153846,
+      "accuracy_relaxed": 0.5408653846153846
+    },
+    "open": {
+      "num_samples": 645,
+      "accuracy_strict": 0.06046511627906977,
+      "accuracy_relaxed": 0.12868217054263567
+    }
+  },
+  "by_eval_mode": {
+    "text_match": {
+      "num_samples": 706,
+      "accuracy_strict": 0.08923512747875353,
+      "accuracy_relaxed": 0.15155807365439095
+    },
+    "yes_no": {
+      "num_samples": 355,
+      "accuracy_strict": 0.5661971830985916,
+      "accuracy_relaxed": 0.5661971830985916
+    }
+  },
+  "by_q_type": {
+    "Abnormality": {
+      "num_samples": 150,
+      "accuracy_strict": 0.4666666666666667,
+      "accuracy_relaxed": 0.54
+    },
+    "Color": {
+      "num_samples": 34,
+      "accuracy_strict": 0.11764705882352941,
+      "accuracy_relaxed": 0.11764705882352941
+    },
+    "KG": {
+      "num_samples": 148,
+      "accuracy_strict": 0.20270270270270271,
+      "accuracy_relaxed": 0.2905405405405405
+    },
+    "Modality": {
+      "num_samples": 108,
+      "accuracy_strict": 0.2777777777777778,
+      "accuracy_relaxed": 0.37037037037037035
+    },
+    "Organ": {
+      "num_samples": 253,
+      "accuracy_strict": 0.31225296442687744,
+      "accuracy_relaxed": 0.33201581027667987
+    },
+    "Plane": {
+      "num_samples": 58,
+      "accuracy_strict": 0.29310344827586204,
+      "accuracy_relaxed": 0.29310344827586204
+    },
+    "Position": {
+      "num_samples": 186,
+      "accuracy_strict": 0.08064516129032258,
+      "accuracy_relaxed": 0.10752688172043011
+    },
+    "Quantity": {
+      "num_samples": 52,
+      "accuracy_strict": 0.1346153846153846,
+      "accuracy_relaxed": 0.1346153846153846
+    },
+    "Shape": {
+      "num_samples": 7,
+      "accuracy_strict": 0.2857142857142857,
+      "accuracy_relaxed": 0.2857142857142857
+    },
+    "Size": {
+      "num_samples": 65,
+      "accuracy_strict": 0.15384615384615385,
+      "accuracy_relaxed": 0.15384615384615385
+    }
+  },
+  "by_content_type": {
+    "unknown": {
+      "num_samples": 1061,
+      "accuracy_strict": 0.24882186616399624,
+      "accuracy_relaxed": 0.29029217719132894
+    }
+  },
+  "by_modality": {
+    "unknown": {
+      "num_samples": 1061,
+      "accuracy_strict": 0.24882186616399624,
+      "accuracy_relaxed": 0.29029217719132894
+    }
+  },
+  "by_location": {
+    "unknown": {
+      "num_samples": 1061,
+      "accuracy_strict": 0.24882186616399624,
+      "accuracy_relaxed": 0.29029217719132894
+    }
+  },
+  "by_base_type": {
+    "unknown": {
+      "num_samples": 1061,
+      "accuracy_strict": 0.24882186616399624,
+      "accuracy_relaxed": 0.29029217719132894
+    }
+  },
+  "meta": {
+    "model_name": "FreedomIntelligence/HuatuoGPT-Vision-7B-Qwen2.5VL",
+    "split": "test",
+    "condition": "patch_shuffle",
+    "seed": 42,
+    "num_predictions": 1061,
+    "lpf_sigma": 3.0,
+    "hpf_sigma": 3.0,
+    "patch_size": 16,
+    "use_hf": true,
+    "hf_dataset_name": "BoKelvin/SLAKE",
+    "slake_root": "/workspace/datasets/SLAKE_raw/Slake1.0"
+  }
+}

@@ -1,0 +1,31 @@
+gt_answer_normalized,pred_answer_normalized,count
+yes,no,107
+no,yes,47
+ct,mri,22
+xray,mri,21
+lung,skin,19
+transverse plane,axial,17
+black,gray,16
+2,0,16
+chest,no,16
+abdomen,head,15
+chest,head,12
+lung,lungs,12
+head,respiratory,10
+liver,skin,9
+none,no,9
+center,no,9
+chest,skin,8
+liver,kidney,8
+transverse plane,yes,7
+t2,t2weighted,6
+lung,no,6
+coronal plane,axial,6
+chest,brain,6
+brain,no,6
+breathe,filter blood,6
+brain,skin,6
+cardiomegaly,no,6
+heart,no,5
+heart,lung,5
+2,two,5

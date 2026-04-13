@@ -1,0 +1,31 @@
+gt_answer_normalized,count
+no,180
+yes,175
+chest,53
+lung,51
+liver,35
+2,26
+transverse plane,24
+ct,23
+head,23
+xray,22
+black,20
+brain,20
+abdomen,19
+mri,18
+heart,17
+t2,15
+0,13
+breathe,13
+lower left lung,13
+center,9
+left,9
+coronal plane,9
+none,9
+pelvic cavity,9
+right lung,8
+1,8
+spleen,8
+t1,7
+cardiomegaly,6
+large bowel,6

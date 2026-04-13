@@ -1,0 +1,31 @@
+pred_answer_normalized,count
+yes,232
+no,214
+liver,54
+brain,39
+two,37
+lungs,35
+left lung,28
+respiratory,26
+chest,24
+axial,24
+ct,22
+xray,21
+lung,20
+mri,18
+abdomen,17
+heart,14
+one,13
+left hemisphere,12
+thorax,11
+t2weighted,11
+kidney,11
+respiration,11
+black,11
+right side,10
+white,10
+gray,8
+right lung,7
+right,7
+minimal,7
+gastrointestinal,5

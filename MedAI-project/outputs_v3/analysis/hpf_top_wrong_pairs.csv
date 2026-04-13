@@ -1,0 +1,31 @@
+gt_answer_normalized,pred_answer_normalized,count
+yes,no,48
+no,yes,47
+lung,lungs,29
+transverse plane,axial,24
+2,two,23
+black,gray,20
+head,brain,18
+chest,respiratory,18
+0,two,11
+breathe,respiration,11
+none,no,8
+1,one,7
+lung,liver,7
+t2,t2weighted,6
+right lung,liver,6
+chest,thorax,6
+cardiomegaly,no,6
+lower left lung,left lung,5
+heart,lung,5
+coronal plane,coronal,5
+xray,ct,5
+large bowel,kidney,4
+visual impairment vomiting tinnitus increased intracranial pressure,yes,4
+small bowel,kidney,4
+left,right side,4
+much,minimal,4
+left lobe,left hemisphere,4
+liver,kidney,4
+t2,t1,4
+a little,minimal,3

@@ -1,0 +1,31 @@
+gt_answer_normalized,pred_answer_normalized,count
+yes,no,146
+no,yes,26
+chest,head,23
+xray,mri,21
+ct,mri,20
+lung,skin,19
+abdomen,head,16
+2,0,14
+2,two,12
+chest,cardiovascular,12
+t2,t1,12
+transverse plane,the image provided does not contain any identifiable anatomical structures or features that would allow,11
+liver,skin,10
+lung,lungs,9
+none,no,9
+liver,kidney,9
+chest,respiratory,8
+brain,skin,8
+transverse plane,axial,8
+head,cardiovascular,8
+brain,no,7
+liver,no,7
+black,white,7
+lung,liver,6
+lung,no,6
+breathe,filter blood and produce urine,6
+lung,heart,6
+0,two,6
+black,gray,6
+cardiomegaly,no,6

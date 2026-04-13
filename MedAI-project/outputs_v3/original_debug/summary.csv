@@ -1,0 +1,15 @@
+group,name,num_samples,accuracy_strict,accuracy_relaxed
+overall,overall,20,0.5,0.65
+answer_type,closed,8,0.875,0.875
+answer_type,open,12,0.25,0.5
+eval_mode,text_match,13,0.3076923076923077,0.5384615384615384
+eval_mode,yes_no,7,0.8571428571428571,0.8571428571428571
+q_type,Abnormality,4,0.5,0.5
+q_type,Modality,2,1.0,1.0
+q_type,Organ,7,0.7142857142857143,0.7142857142857143
+q_type,Position,4,0.0,0.25
+q_type,Size,3,0.3333333333333333,1.0
+content_type,unknown,20,0.5,0.65
+modality,unknown,20,0.5,0.65
+location,unknown,20,0.5,0.65
+base_type,unknown,20,0.5,0.65

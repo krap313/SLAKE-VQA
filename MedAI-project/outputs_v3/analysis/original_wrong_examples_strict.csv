@@ -1,0 +1,31 @@
+image_id,question_id,question,gt_answer,pred_answer,gt_answer_normalized,pred_answer_normalized,answer_type,q_type,content_type,modality,location,base_type,condition,eval_mode,is_correct_strict,is_correct_relaxed
+103,11949,Does the picture contain liver?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+124,11971,"Which organ is abnormal, heart or lung?",Heart,Lung,heart,lung,closed,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+13,11975,Is there any abnormality in the spleen?,No,Yes.,no,yes,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+13,11976,Does the liver look normal?,Yes,No.,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+13,11979,Does the picture contain spleen?,Yes,No.,yes,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+135,11989,Are there abnormalities in this image?,Yes,No,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+142,12000,"Which organ is abnormal, heart or lung?",Heart,Lung,heart,lung,closed,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+148,12011,Are there abnormalities in this image?,Yes,No,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+148,12015,"Which organ is abnormal, heart or lung?",Heart,Lung,heart,lung,closed,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+152,12022,"Which organ is abnormal, heart or lung?",Heart,Lung,heart,lung,closed,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+18,12064,Does the kidney look abnormal?,No,Yes.,no,yes,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+185,12074,"Which organ is abnormal, heart or lung?",Lung,Heart,lung,heart,closed,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+208,12080,Does the picture contain spleen?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+208,12085,Is the liver healthy?,Yes,No,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+219,12092,Does this image look normal?,Yes,No.,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+219,12101,Is the liver healthy?,Yes,No.,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+219,12102,"Which is the biggest in this image, lung,heart or liver?",Lung,Liver,lung,liver,closed,Size,unknown,unknown,unknown,unknown,original,text_match,False,False
+224,12112,Does the picture contain lung?,Yes,No,yes,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+224,12113,Does the picture contain heart?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+234,12124,Does the picture contain kidney?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+234,12130,"Which is bigger in this image, kidney or spleen?",Liver,Spleen,liver,spleen,closed,Size,unknown,unknown,unknown,unknown,original,text_match,False,False
+235,12148,Does the picture contain lung?,Yes,No,yes,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+235,12150,"Which is bigger in this image, liver or spleen?",Spleen,Liver,spleen,liver,closed,Size,unknown,unknown,unknown,unknown,original,text_match,False,False
+24,12159,Does the picture contain kidney?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+253,12209,Does this image look normal?,Yes,No.,yes,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,False,False
+253,12213,Does the picture contain spleen?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+264,12224,Does the picture contain liver?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+269,12241,Does the picture contain lung?,Yes,No,yes,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+269,12242,Does the picture contain heart?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+274,12253,Does the picture contain kidney?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False

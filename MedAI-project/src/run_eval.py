@@ -8,7 +8,12 @@ from tqdm import tqdm
 
 from src.data.slake_dataset import SlakeDataset
 from src.eval.metrics import build_summary
-from src.eval.parsing import normalize_text, open_match, parse_closed_answer
+from src.eval.parsing import (
+    exact_match,
+    normalize_text,
+    parse_closed_answer,
+    substring_match,
+)
 from src.models.huatuo_qwen import HuatuoQwenVLM
 from src.transforms.image_conditions import get_condition_fn
 from src.utils.io import ensure_dir, save_csv, save_json, save_jsonl
@@ -41,13 +46,12 @@ def parse_args():
     parser.add_argument("--patch_size", type=int, default=16)
     parser.add_argument("--device", type=str, default="cuda")
     parser.add_argument("--max_new_tokens", type=int, default=16)
-    parser.add_argument(
-        "--open_match_mode",
-        type=str,
-        default="exact",
-        choices=["exact", "substring"],
-    )
     return parser.parse_args()
+
+
+def is_yes_no_answer(text: str) -> bool:
+    norm = normalize_text(text)
+    return norm in {"yes", "no"}
 
 
 def main():
@@ -96,21 +100,25 @@ def main():
                 max_new_tokens=args.max_new_tokens,
             )
 
-            if sample["answer_type"] == "closed":
-                gt_norm = parse_closed_answer(sample["answer"])
+            gt_answer_raw = sample["answer"]
+
+            if is_yes_no_answer(gt_answer_raw):
+                gt_norm = parse_closed_answer(gt_answer_raw)
                 pred_norm = parse_closed_answer(pred_raw)
 
-                is_correct = (gt_norm is not None) and (pred_norm == gt_norm)
+                is_correct_strict = (gt_norm is not None) and (pred_norm == gt_norm)
+                is_correct_relaxed = is_correct_strict
+                eval_mode = "yes_no"
+
+                gt_eval = gt_norm if gt_norm is not None else normalize_text(gt_answer_raw)
                 pred_eval = pred_norm if pred_norm is not None else normalize_text(pred_raw)
-                gt_eval = gt_norm if gt_norm is not None else normalize_text(sample["answer"])
             else:
+                gt_eval = normalize_text(gt_answer_raw)
                 pred_eval = normalize_text(pred_raw)
-                gt_eval = normalize_text(sample["answer"])
-                is_correct = open_match(
-                    pred_raw,
-                    sample["answer"],
-                    mode=args.open_match_mode,
-                )
+
+                is_correct_strict = exact_match(pred_raw, gt_answer_raw)
+                is_correct_relaxed = substring_match(pred_raw, gt_answer_raw)
+                eval_mode = "text_match"
 
             rows.append(
                 {
@@ -123,8 +131,14 @@ def main():
                     "pred_answer_normalized": pred_eval,
                     "answer_type": sample["answer_type"],
                     "q_type": sample["q_type"],
+                    "content_type": sample.get("content_type", "unknown"),
+                    "modality": sample.get("modality", "unknown"),
+                    "location": sample.get("location", "unknown"),
+                    "base_type": sample.get("base_type", "unknown"),
                     "condition": args.condition,
-                    "is_correct": bool(is_correct),
+                    "eval_mode": eval_mode,
+                    "is_correct_strict": bool(is_correct_strict),
+                    "is_correct_relaxed": bool(is_correct_relaxed),
                 }
             )
 
@@ -146,7 +160,6 @@ def main():
         "lpf_sigma": args.lpf_sigma,
         "hpf_sigma": args.hpf_sigma,
         "patch_size": args.patch_size,
-        "open_match_mode": args.open_match_mode,
         "use_hf": args.use_hf,
         "hf_dataset_name": args.hf_dataset_name,
         "slake_root": args.slake_root,
@@ -155,23 +168,37 @@ def main():
     save_jsonl(rows, os.path.join(args.output_dir, "predictions.jsonl"))
     save_csv(rows, os.path.join(args.output_dir, "predictions.csv"))
     save_json(summary, os.path.join(args.output_dir, "summary.json"))
-    save_csv(
-        [
-            {"group": "overall", "name": "overall", **summary["overall"]},
-            *[
-                {"group": "answer_type", "name": k, **v}
-                for k, v in summary["by_answer_type"].items()
-            ],
-            *[
-                {"group": "q_type", "name": k, **v}
-                for k, v in summary["by_q_type"].items()
-            ],
-        ],
-        os.path.join(args.output_dir, "summary.csv"),
-    )
+
+    flat_rows = [{"group": "overall", "name": "overall", **summary["overall"]}]
+    for group_name in [
+        "by_answer_type",
+        "by_eval_mode",
+        "by_q_type",
+        "by_content_type",
+        "by_modality",
+        "by_location",
+        "by_base_type",
+    ]:
+        for k, v in summary.get(group_name, {}).items():
+            flat_rows.append(
+                {
+                    "group": group_name.replace("by_", ""),
+                    "name": k,
+                    **v,
+                }
+            )
+
+    save_csv(flat_rows, os.path.join(args.output_dir, "summary.csv"))
 
     logger.info("Finished. Results saved to %s", args.output_dir)
-    logger.info("Overall accuracy: %.4f", summary.get("overall", {}).get("accuracy", 0.0))
+    logger.info(
+        "Overall strict accuracy: %.4f",
+        summary.get("overall", {}).get("accuracy_strict", 0.0),
+    )
+    logger.info(
+        "Overall relaxed accuracy: %.4f",
+        summary.get("overall", {}).get("accuracy_relaxed", 0.0),
+    )
 
 
 if __name__ == "__main__":

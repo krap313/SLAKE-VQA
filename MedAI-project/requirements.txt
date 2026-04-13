@@ -12,3 +12,4 @@ scikit-image>=0.22.0
 qwen-vl-utils>=0.0.10
 datasets>=2.19.0
 huggingface_hub>=0.24.0
+tabulate

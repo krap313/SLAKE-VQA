@@ -19,51 +19,58 @@ def load_summary(summary_path: str) -> Dict:
 def flatten_summary(condition: str, summary: Dict) -> List[Dict]:
     rows: List[Dict] = []
 
-    overall = summary.get("overall", {})
-    meta = summary.get("meta", {})
-
-    rows.append(
-        {
-            "condition": condition,
-            "group": "overall",
-            "name": "overall",
-            "num_samples": overall.get("num_samples", None),
-            "accuracy": overall.get("accuracy", None),
-            "split": meta.get("split", None),
-            "seed": meta.get("seed", None),
-            "use_hf": meta.get("use_hf", None),
-        }
-    )
-
-    for answer_type, values in summary.get("by_answer_type", {}).items():
-        rows.append(
-            {
-                "condition": condition,
-                "group": "answer_type",
-                "name": answer_type,
-                "num_samples": values.get("num_samples", None),
-                "accuracy": values.get("accuracy", None),
-                "split": meta.get("split", None),
-                "seed": meta.get("seed", None),
-                "use_hf": meta.get("use_hf", None),
-            }
-        )
-
-    for q_type, values in summary.get("by_q_type", {}).items():
-        rows.append(
-            {
-                "condition": condition,
-                "group": "q_type",
-                "name": q_type,
-                "num_samples": values.get("num_samples", None),
-                "accuracy": values.get("accuracy", None),
-                "split": meta.get("split", None),
-                "seed": meta.get("seed", None),
-                "use_hf": meta.get("use_hf", None),
-            }
-        )
+    for group_key, group_name in [
+        ("overall", "overall"),
+        ("by_answer_type", "answer_type"),
+        ("by_eval_mode", "eval_mode"),
+        ("by_q_type", "q_type"),
+        ("by_content_type", "content_type"),
+        ("by_modality", "modality"),
+        ("by_location", "location"),
+        ("by_base_type", "base_type"),
+    ]:
+        if group_key == "overall":
+            val = summary.get("overall", {})
+            rows.append(
+                {
+                    "condition": condition,
+                    "group": group_name,
+                    "name": "overall",
+                    "num_samples": val.get("num_samples"),
+                    "accuracy_strict": val.get("accuracy_strict"),
+                    "accuracy_relaxed": val.get("accuracy_relaxed"),
+                }
+            )
+        else:
+            for k, val in summary.get(group_key, {}).items():
+                rows.append(
+                    {
+                        "condition": condition,
+                        "group": group_name,
+                        "name": k,
+                        "num_samples": val.get("num_samples"),
+                        "accuracy_strict": val.get("accuracy_strict"),
+                        "accuracy_relaxed": val.get("accuracy_relaxed"),
+                    }
+                )
 
     return rows
+
+
+def make_pivot(df: pd.DataFrame, group: str, value_col: str) -> pd.DataFrame:
+    part = df[df["group"] == group].copy()
+    if part.empty:
+        return pd.DataFrame()
+
+    pivot = part.pivot_table(
+        index="condition",
+        columns="name",
+        values=value_col,
+        aggfunc="first",
+    )
+    pivot = pivot.reindex(CONDITIONS)
+    pivot = pivot.reset_index()
+    return pivot
 
 
 def main():
@@ -75,66 +82,40 @@ def main():
     os.makedirs(args.save_dir, exist_ok=True)
 
     all_rows: List[Dict] = []
-    overall_rows: List[Dict] = []
-
     for condition in CONDITIONS:
         summary_path = os.path.join(args.base_out, condition, "summary.json")
         if not os.path.exists(summary_path):
             print(f"[WARN] Missing summary: {summary_path}")
             continue
-
         summary = load_summary(summary_path)
-        rows = flatten_summary(condition, summary)
-        all_rows.extend(rows)
-
-        overall = summary.get("overall", {})
-        overall_rows.append(
-            {
-                "condition": condition,
-                "num_samples": overall.get("num_samples", None),
-                "accuracy": overall.get("accuracy", None),
-            }
-        )
+        all_rows.extend(flatten_summary(condition, summary))
 
     if not all_rows:
         raise FileNotFoundError("No summary.json files found.")
 
-    df_all = pd.DataFrame(all_rows)
-    df_overall = pd.DataFrame(overall_rows)
+    df = pd.DataFrame(all_rows)
+    df.to_csv(os.path.join(args.save_dir, "all_results_long.csv"), index=False)
 
-    overall_pivot = df_overall[["condition", "accuracy"]].copy()
-    overall_pivot = overall_pivot.set_index("condition").reindex(CONDITIONS).reset_index()
+    for group in ["overall", "answer_type", "eval_mode", "q_type", "content_type"]:
+        for metric in ["accuracy_strict", "accuracy_relaxed"]:
+            pivot = make_pivot(df, group, metric)
+            if not pivot.empty:
+                pivot.to_csv(
+                    os.path.join(args.save_dir, f"{group}_{metric}_pivot.csv"),
+                    index=False,
+                )
 
-    answer_type_df = df_all[df_all["group"] == "answer_type"].copy()
-    if not answer_type_df.empty:
-        answer_type_pivot = answer_type_df.pivot_table(
-            index="condition",
-            columns="name",
-            values="accuracy",
-            aggfunc="first",
-        ).reindex(CONDITIONS)
-        answer_type_pivot = answer_type_pivot.reset_index()
-    else:
-        answer_type_pivot = pd.DataFrame()
+    print("\nSaved comparison files to:", args.save_dir)
 
-    df_all.to_csv(os.path.join(args.save_dir, "all_results_long.csv"), index=False)
-    df_overall.to_csv(os.path.join(args.save_dir, "overall_results.csv"), index=False)
-    overall_pivot.to_csv(os.path.join(args.save_dir, "overall_results_pivot.csv"), index=False)
+    overall_strict = make_pivot(df, "overall", "accuracy_strict")
+    if not overall_strict.empty:
+        print("\n=== overall / strict ===")
+        print(overall_strict.to_string(index=False))
 
-    if not answer_type_pivot.empty:
-        answer_type_pivot.to_csv(
-            os.path.join(args.save_dir, "answer_type_results_pivot.csv"),
-            index=False,
-        )
-
-    print("\n=== Overall Accuracy ===")
-    print(overall_pivot.to_string(index=False))
-
-    if not answer_type_pivot.empty:
-        print("\n=== Accuracy by Answer Type ===")
-        print(answer_type_pivot.to_string(index=False))
-
-    print(f"\nSaved comparison files to: {args.save_dir}")
+    overall_relaxed = make_pivot(df, "overall", "accuracy_relaxed")
+    if not overall_relaxed.empty:
+        print("\n=== overall / relaxed ===")
+        print(overall_relaxed.to_string(index=False))
 
 
 if __name__ == "__main__":

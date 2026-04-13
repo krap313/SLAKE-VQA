@@ -1,0 +1,21 @@
+image_id,question_id,question,gt_answer,pred_answer,gt_answer_normalized,pred_answer_normalized,answer_type,q_type,content_type,modality,location,base_type,condition,eval_mode,is_correct_strict,is_correct_relaxed
+102,11934,What modality is used to take this image?,CT,CT,ct,ct,open,Modality,unknown,unknown,unknown,unknown,original,text_match,True,True
+102,11935,Which part of the body does this image belong to?,Chest,Thorax,chest,thorax,open,Position,unknown,unknown,unknown,unknown,original,text_match,False,False
+102,11936,What is the main organ in the image?,"Lung, Spinal Cord",Lungs,lung spinal cord,lungs,open,Organ,unknown,unknown,unknown,unknown,original,text_match,False,False
+102,11937,What is the largest organ in the picture?,Lung,Lungs,lung,lungs,open,Size,unknown,unknown,unknown,unknown,original,text_match,False,True
+102,11938,Does the picture contain liver?,No,No,no,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,True,True
+102,11939,Does the picture contain lung?,Yes,Yes.,yes,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,True,True
+102,11940,Does the picture contain heart?,No,No,no,no,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,True,True
+102,11941,What diseases are included in the picture?,Lung Cancer,No,lung cancer,no,open,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+102,11942,Is the lung healthy?,No,No.,no,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,True,True
+102,11943,Where is/are the abnormality located?,"Left Lung, Right",Left lung,left lung right,left lung,open,Position,unknown,unknown,unknown,unknown,original,text_match,False,True
+102,11944,"Which is the biggest in this image,lung,liver or heart?",Lung,Lung,lung,lung,closed,Size,unknown,unknown,unknown,unknown,original,text_match,True,True
+103,11945,What modality is used to take this image?,CT,CT,ct,ct,open,Modality,unknown,unknown,unknown,unknown,original,text_match,True,True
+103,11946,Which part of the body does this image belong to?,Chest,Thorax,chest,thorax,open,Position,unknown,unknown,unknown,unknown,original,text_match,False,False
+103,11947,What is the main organ in the image?,Lung,Lung,lung,lung,open,Organ,unknown,unknown,unknown,unknown,original,text_match,True,True
+103,11948,What is the largest organ in the picture?,Lung,Lungs,lung,lungs,open,Size,unknown,unknown,unknown,unknown,original,text_match,False,True
+103,11949,Does the picture contain liver?,No,Yes.,no,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,False,False
+103,11950,Does the picture contain lung?,Yes,Yes.,yes,yes,closed,Organ,unknown,unknown,unknown,unknown,original,yes_no,True,True
+103,11951,What diseases are included in the picture?,Lung Cancer,No,lung cancer,no,open,Abnormality,unknown,unknown,unknown,unknown,original,text_match,False,False
+103,11952,Is the lung healthy?,No,No.,no,no,closed,Abnormality,unknown,unknown,unknown,unknown,original,yes_no,True,True
+103,11953,Where is/are the abnormality located?,"Left Lung, Right",Thorax,left lung right,thorax,open,Position,unknown,unknown,unknown,unknown,original,text_match,False,False

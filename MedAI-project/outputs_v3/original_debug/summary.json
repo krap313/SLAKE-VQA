@@ -1,0 +1,99 @@
+{
+  "overall": {
+    "num_samples": 20,
+    "accuracy_strict": 0.5,
+    "accuracy_relaxed": 0.65
+  },
+  "by_answer_type": {
+    "closed": {
+      "num_samples": 8,
+      "accuracy_strict": 0.875,
+      "accuracy_relaxed": 0.875
+    },
+    "open": {
+      "num_samples": 12,
+      "accuracy_strict": 0.25,
+      "accuracy_relaxed": 0.5
+    }
+  },
+  "by_eval_mode": {
+    "text_match": {
+      "num_samples": 13,
+      "accuracy_strict": 0.3076923076923077,
+      "accuracy_relaxed": 0.5384615384615384
+    },
+    "yes_no": {
+      "num_samples": 7,
+      "accuracy_strict": 0.8571428571428571,
+      "accuracy_relaxed": 0.8571428571428571
+    }
+  },
+  "by_q_type": {
+    "Abnormality": {
+      "num_samples": 4,
+      "accuracy_strict": 0.5,
+      "accuracy_relaxed": 0.5
+    },
+    "Modality": {
+      "num_samples": 2,
+      "accuracy_strict": 1.0,
+      "accuracy_relaxed": 1.0
+    },
+    "Organ": {
+      "num_samples": 7,
+      "accuracy_strict": 0.7142857142857143,
+      "accuracy_relaxed": 0.7142857142857143
+    },
+    "Position": {
+      "num_samples": 4,
+      "accuracy_strict": 0.0,
+      "accuracy_relaxed": 0.25
+    },
+    "Size": {
+      "num_samples": 3,
+      "accuracy_strict": 0.3333333333333333,
+      "accuracy_relaxed": 1.0
+    }
+  },
+  "by_content_type": {
+    "unknown": {
+      "num_samples": 20,
+      "accuracy_strict": 0.5,
+      "accuracy_relaxed": 0.65
+    }
+  },
+  "by_modality": {
+    "unknown": {
+      "num_samples": 20,
+      "accuracy_strict": 0.5,
+      "accuracy_relaxed": 0.65
+    }
+  },
+  "by_location": {
+    "unknown": {
+      "num_samples": 20,
+      "accuracy_strict": 0.5,
+      "accuracy_relaxed": 0.65
+    }
+  },
+  "by_base_type": {
+    "unknown": {
+      "num_samples": 20,
+      "accuracy_strict": 0.5,
+      "accuracy_relaxed": 0.65
+    }
+  },
+  "meta": {
+    "model_name": "FreedomIntelligence/HuatuoGPT-Vision-7B-Qwen2.5VL",
+    "split": "test",
+    "condition": "original",
+    "seed": 42,
+    "num_predictions": 20,
+    "lpf_sigma": 3.0,
+    "hpf_sigma": 3.0,
+    "patch_size": 16,
+    "use_hf": true,
+    "hf_dataset_name": "BoKelvin/SLAKE",
+    "slake_root": "/workspace/datasets/SLAKE_raw/Slake1.0"
+  }
+}

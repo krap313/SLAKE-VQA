@@ -1,0 +1,31 @@
+pred_answer_normalized,count
+no,397
+yes,166
+mri,56
+head,50
+skin,44
+0,31
+kidney,25
+axial,23
+brain,21
+respiratory,20
+lung,17
+liver,16
+lungs,16
+gray,16
+abdomen,10
+heart,10
+left lung,9
+two,8
+black,8
+t1,7
+t2weighted,6
+right,6
+filter blood,6
+none,6
+unknown,6
+eye,5
+right upper quadrant,5
+t1weighted,5
+respiratory system,4
+left lower lobe,4

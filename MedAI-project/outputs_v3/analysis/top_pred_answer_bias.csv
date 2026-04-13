@@ -1,0 +1,151 @@
+pred_answer_normalized,count,condition
+yes,232,original
+no,214,original
+liver,54,original
+brain,39,original
+two,37,original
+lungs,35,original
+left lung,28,original
+respiratory,26,original
+chest,24,original
+axial,24,original
+ct,22,original
+xray,21,original
+lung,20,original
+mri,18,original
+abdomen,17,original
+heart,14,original
+one,13,original
+left hemisphere,12,original
+thorax,11,original
+t2weighted,11,original
+kidney,11,original
+respiration,11,original
+black,11,original
+right side,10,original
+white,10,original
+gray,8,original
+right lung,7,original
+right,7,original
+minimal,7,original
+gastrointestinal,5,original
+no,433,black
+yes,81,black
+mri,56,black
+head,53,black
+skin,39,black
+0,28,black
+liver,25,black
+cardiovascular,24,black
+heart,23,black
+two,23,black
+left lung,22,black
+kidney,21,black
+brain,20,black
+respiratory,19,black
+t1,18,black
+axial,13,black
+the image provided does not contain any identifiable anatomical structures or features that would allow,11,black
+lungs,11,black
+black,9,black
+right upper quadrant,8,black
+white,8,black
+right,6,black
+filter blood and produce urine,6,black
+gray,6,black
+coronal,6,black
+respiratory system,6,black
+abdomen,5,black
+right lung,5,black
+kidneys,5,black
+left lower lobe,5,black
+yes,226,lpf
+no,223,lpf
+liver,56,lpf
+lungs,38,lpf
+brain,38,lpf
+two,37,lpf
+left lung,25,lpf
+axial,24,lpf
+respiratory,24,lpf
+chest,23,lpf
+xray,21,lpf
+mri,21,lpf
+ct,20,lpf
+lung,18,lpf
+abdomen,16,lpf
+heart,14,lpf
+black,14,lpf
+one,14,lpf
+left hemisphere,13,lpf
+right side,12,lpf
+kidney,12,lpf
+thorax,11,lpf
+right lung,11,lpf
+respiration,10,lpf
+white,9,lpf
+t2weighted,7,lpf
+right,7,lpf
+minimal,7,lpf
+gray,6,lpf
+t1,6,lpf
+no,235,hpf
+yes,216,hpf
+liver,46,hpf
+brain,39,hpf
+two,37,hpf
+lungs,35,hpf
+gray,28,hpf
+ct,26,hpf
+axial,24,hpf
+abdomen,23,hpf
+respiratory,22,hpf
+chest,20,hpf
+kidney,20,hpf
+lung,19,hpf
+left lung,19,hpf
+mri,19,hpf
+xray,16,hpf
+left hemisphere,13,hpf
+heart,12,hpf
+right side,11,hpf
+respiration,11,hpf
+one,11,hpf
+thorax,10,hpf
+t2weighted,9,hpf
+left side,8,hpf
+minimal,7,hpf
+right,6,hpf
+gastrointestinal,6,hpf
+t1,6,hpf
+right lung,5,hpf
+no,397,patch_shuffle
+yes,166,patch_shuffle
+mri,56,patch_shuffle
+head,50,patch_shuffle
+skin,44,patch_shuffle
+0,31,patch_shuffle
+kidney,25,patch_shuffle
+axial,23,patch_shuffle
+brain,21,patch_shuffle
+respiratory,20,patch_shuffle
+lung,17,patch_shuffle
+liver,16,patch_shuffle
+lungs,16,patch_shuffle
+gray,16,patch_shuffle
+abdomen,10,patch_shuffle
+heart,10,patch_shuffle
+left lung,9,patch_shuffle
+two,8,patch_shuffle
+black,8,patch_shuffle
+t1,7,patch_shuffle
+t2weighted,6,patch_shuffle
+right,6,patch_shuffle
+filter blood,6,patch_shuffle
+none,6,patch_shuffle
+unknown,6,patch_shuffle
+eye,5,patch_shuffle
+right upper quadrant,5,patch_shuffle
+t1weighted,5,patch_shuffle
+respiratory system,4,patch_shuffle
+left lower lobe,4,patch_shuffle
