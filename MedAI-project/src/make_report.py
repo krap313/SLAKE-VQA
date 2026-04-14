@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 # python -m src.make_report --analysis_dir outputs_v3/analysis --output_path outputs_v3/analysis/report.md
 
-=======
->>>>>>> 373fc9d (strict / relaxed 채점)
 from __future__ import annotations
 
 import argparse
